@@ -58,7 +58,6 @@ endif()
 file(GLOB SOURCES2
 "${CMAKE_CURRENT_SOURCE_DIR}/src/Helpers.cpp"
 "${CMAKE_CURRENT_SOURCE_DIR}/src/Helpers.h"
-"${CMAKE_CURRENT_SOURCE_DIR}/src/object_helper.h"
 )
 
 ### Compile all the cpp files in src
