@@ -65,6 +65,5 @@ file(GLOB SOURCES
 "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp"
 )
 
-add_executable(${PROJECT_NAME}_bin ${SOURCES} "src/object_helper.h")
 target_link_libraries(${PROJECT_NAME}_bin ${LIBRARIES} ${OPENGL_LIBRARIES})
 
