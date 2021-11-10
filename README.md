@@ -56,18 +56,6 @@ Implement both a *orthographic camera* (similar to the one that you used for Ass
 
 These tasks are optional. Each task worth 4% of the final grade.
 
-## Blobby Man
-
-In order to complete this extra task you must first read James Blinn's paper: 
-
-* Nested Transformations and Blobby Man https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=4057037
-
-You must model (using spheres and ellipsis) and animate the Blobby Man in this extra task.
-
-You must be able to select different parts of the Blobby Man's body (using keys or mouse selection) and animate them properly (the hands should move if the arm moved and so on). The video below shows Blinn's original animation and can (you don't need to reproduce all the animation) be used as an inspirational tool.
-
-* https://www.youtube.com/watch?v=RjxkdEvuQUE&feature=emb_title
-
 ## Trackball
 
 Use a trackball to control the camera. This can be achieved restricting the movement of the camera on a sphere centered on the origin. The easiest way to do it is to parametrize the sphere using spherical coordinates, and to assign keyboard keys to move the camera on the sphere. The camera should always look at the origin.
