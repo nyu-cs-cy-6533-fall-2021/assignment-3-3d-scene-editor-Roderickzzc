@@ -40,7 +40,9 @@ Each object also has a rendering setting associated with it, which can be one of
 
 * Phong Shading: the normals are specified on the vertices of the mesh and interpolated in the interior. The lighting equation should be evaluated for each fragment.
 
-![bunny](bunny.png)
+![create an triangle](/blob/move.gif)
+
+![create an triangle](/blob/3.gif)
    
 To compute the per-vertex normals you should first compute the per-face normals, and then average them on the neighboring vertices. In other words, the normal of the vertex of a mesh should be the average of the normals of the faces touching it. Remember to normalize the normals after averaging.
 
@@ -52,6 +54,10 @@ Add the possibility to translate the position of the camera (similarly to the pr
 
 Implement both a *orthographic camera* (similar to the one that you used for Assignment 2, but in 3D) and a *perspective camera*. The cameras should take into account the size of the window, properly adapting the aspect ratio to not distort the image whenever the window is resized. All functionalities should work after resizing the window, including object selection and editing of the scene.
 
+![create an triangle](/blob/per.gif)
+
+![create an triangle](/blob/orth.gif)
+
 ## Optional Tasks
 
 These tasks are optional. Each task worth 4% of the final grade.
@@ -62,6 +68,7 @@ Use a trackball to control the camera. This can be achieved restricting the move
 
 ![trackball](trackball.png)
 
+![create an triangle](/blob/trace.gif)
 Prof. Ken Joy's lecture on Quartenions is useful to understand the trackbal. Although it is useful to see the complete video, the most relevant part is at around the 30 min mark when Prof. Joy discusses implementing a trackball.
 
 * https://www.youtube.com/watch?v=mHVwd8gYLnI
