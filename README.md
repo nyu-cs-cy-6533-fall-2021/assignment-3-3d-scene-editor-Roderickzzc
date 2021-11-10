@@ -10,48 +10,6 @@ Demo date: TBA, via Zoom appointments
 
 This assignment accounts for 20% of your final grade. 
 
-## Goals
-
-In this exercise you will implement a 3D editor that allows to prepare 3D scenes composed of multiple 3D objects.
-
-## GLM
-
-In all exercises you will need to do operations with vectors and matrices. To simplify the code, you will use GLM:
-
-* https://glm.g-truc.net/0.9.9/index.html
-
-Have a look at the Getting Started page of GLM as well as the Code Samples page to acquaintain yourselves with the basic vector and matrix operations supported:
-
-* https://github.com/g-truc/glm/blob/master/manual.md#section1
-
-* https://github.com/g-truc/glm/blob/master/manual.md#section8
-
-## OpenGL
-
-In all exercises you will use OpenGL 3.3 with GLSL version 150 (You can use a newer version if you want).
-
-## Submission
-
-Try to maintain the same directory organization as the starter code, so you don't need to change the CMakeLists.txt file.
-
-* Follow this to accept assignment and create repository: 
-
-```bash
-https://classroom.github.com/a/6WKxDqa3
-```
-
-* You MUST use the source code provided for Assignment 2 in the class repository. Don't forget to initialize and update the submodules: 
-
-```bash
-git submodule update --init --recursive https://github.com/nyu-cs-gy-6533-fall-2020/base 
-```
-
-* Modify the provided code following the assignment instructions.
-
-* Add a report in markdown format that contains what you did with a screenshot for each task.
-
-* Commit and push the code into the repository before the deadline.
-
 ## Mandatory Tasks
 
 For each task below, add at least one image in the readme demonstrating the results. The code that you used for all tasks should be provided.
