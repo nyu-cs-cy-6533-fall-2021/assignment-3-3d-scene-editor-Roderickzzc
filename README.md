@@ -66,7 +66,6 @@ These tasks are optional. Each task worth 4% of the final grade.
 
 Use a trackball to control the camera. This can be achieved restricting the movement of the camera on a sphere centered on the origin. The easiest way to do it is to parametrize the sphere using spherical coordinates, and to assign keyboard keys to move the camera on the sphere. The camera should always look at the origin.
 
-![trackball](trackball.png)
 
 ![create an triangle](/blob/trace.gif)
 Prof. Ken Joy's lecture on Quartenions is useful to understand the trackbal. Although it is useful to see the complete video, the most relevant part is at around the 30 min mark when Prof. Joy discusses implementing a trackball.
