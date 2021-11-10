@@ -43,6 +43,8 @@ Each object also has a rendering setting associated with it, which can be one of
 ![create an triangle](/blob/move.gif)
 
 ![create an triangle](/blob/3.gif)
+
+![create an triangle](/blob/mode.gif)
    
 To compute the per-vertex normals you should first compute the per-face normals, and then average them on the neighboring vertices. In other words, the normal of the vertex of a mesh should be the average of the normals of the faces touching it. Remember to normalize the normals after averaging.
 
