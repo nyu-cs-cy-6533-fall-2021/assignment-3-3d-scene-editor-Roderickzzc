@@ -38,6 +38,7 @@ VertexBufferObject VBO_cube_normal;
 std::vector<glm::vec3> V_cube(360);
 std::vector<glm::vec3> C_cube(360);
 std::vector<glm::vec3> N_cube(360);
+std::vector<glm::vec3> N_cube_new(360);
 
 VertexBufferObject VBO_bumpyCube;
 VertexBufferObject VBO_bumpyCube_color;
@@ -45,6 +46,7 @@ VertexBufferObject VBO_bumpyCube_normal;
 std::vector<glm::vec3> V_bumpyCube(30000);
 std::vector<glm::vec3> C_bumpyCube(30000);
 std::vector<glm::vec3> N_bumpyCube(30000);
+std::vector<glm::vec3> N_bumpyCube_new(30000);
 
 VertexBufferObject VBO_bunny;
 VertexBufferObject VBO_bunny_color;
@@ -52,6 +54,7 @@ VertexBufferObject VBO_bunny_normal;
 std::vector<glm::vec3> V_bunny(30000);
 std::vector<glm::vec3> C_bunny(30000);
 std::vector<glm::vec3> N_bunny(30000);
+std::vector<glm::vec3> N_bunny_new(30000);
 
 int object_ID=0;
 float pixelData[4];
@@ -76,7 +79,7 @@ vector<int> bunny_modes;
 int selected_spieces = 0;
 int selected_spieces_ID = 0;
 
-std::vector<glm::vec3> calculateAverageNormal(std::vector<glm::vec3> V, std::vector<glm::vec3> N, int start, int end);
+void calculateAverageNormal(std::vector<glm::vec3> V, std::vector<glm::vec3> N, int start, int end, std::vector<glm::vec3> &N_new);
 //std::vector<glm::vec3> calculateAverageNormal1(std::vector<glm::vec3> V, std::vector<glm::vec3> N, int start, int end);
 
 /*
@@ -186,7 +189,7 @@ void addCube() {
 	}
 
 	
-
+	calculateAverageNormal(V_cube, N_cube, 36 * totalNumCube, 36 * (totalNumCube + 1) - 1, N_cube_new);
 	totalNumCube++;
 	VBO_cube.update(V_cube);
 	VBO_cube_color.update(C_cube);
@@ -194,7 +197,7 @@ void addCube() {
 
 	cube_models.push_back(id);
 	cube_modes.push_back(0);
-
+	
 	//N_cube = calculateAverageNormal1(V_cube, N_cube, 0, 35);
 	//VBO_cube_normal.update(N_cube);
 }
@@ -309,6 +312,8 @@ void addBumpyCube() {
 			i++;
 		}
 	}
+
+	calculateAverageNormal(V_bumpyCube, N_bumpyCube, 3000 * totalNumBumpyCube, 3000 * (totalNumBumpyCube + 1) - 1, N_bumpyCube_new);
 	totalNumBumpyCube++;
 	VBO_bumpyCube.update(V_bumpyCube);
 	VBO_bumpyCube_color.update(C_bumpyCube);
@@ -316,7 +321,7 @@ void addBumpyCube() {
 	model_bumpyCube = normalizeModel(vertex);
 	bumpyCube_models.push_back(model_bumpyCube);
 	bumpyCube_modes.push_back(0);
-
+	
 }
 
 void addBunny() {
@@ -357,6 +362,8 @@ void addBunny() {
 			i++;
 		}
 	}
+
+	calculateAverageNormal(V_bunny, N_bunny, 3000 * totalNumBunny, 3000 * (totalNumBunny + 1) - 1, N_bunny_new);
 	totalNumBunny++;
 	VBO_bunny.update(V_bunny);
 	VBO_bunny_color.update(C_bunny);
@@ -521,10 +528,10 @@ void rotateCounterClockwise(int i, int obj_id) {
 	}
 }
 
-std::vector<glm::vec3> calculateAverageNormal(std::vector<glm::vec3> V, std::vector<glm::vec3> N, int start, int end){
+void calculateAverageNormal(std::vector<glm::vec3> V, std::vector<glm::vec3> N, int start, int end, std::vector<glm::vec3> &N_new){
 	vector<int> already_calculated(V.size(), 0);
 	vector<int> count(V.size(),1);
-	std::vector<glm::vec3> N_new = N;
+	N_new = N;
 
 	for (int i = start; i <= end; i++) {
 		if (already_calculated[i] == 0) {
@@ -557,7 +564,7 @@ std::vector<glm::vec3> calculateAverageNormal(std::vector<glm::vec3> V, std::vec
 		//cout << N_new[i].x << " " << N_new[i].y<<" " << N_new[i].z << " " << i << endl;
 	}
 
-	return N_new;
+	//return N_new;
 }
 
 int returnIterator(vector<glm::vec3> Uni_V, glm::vec3 V_i) {
@@ -1110,7 +1117,6 @@ int main(void)
 			}
 			else if (cube_modes[i] == 3) {
 				
-				std::vector<glm::vec3>N_cube_new=calculateAverageNormal(V_cube, N_cube, 36*i, 36*(i+1)-1);
 				VBO_cube_normal.update(N_cube_new);
 				glDrawArrays(GL_TRIANGLES, 36 * i, 36);
 			}
@@ -1151,7 +1157,7 @@ int main(void)
 				glDrawArrays(GL_TRIANGLES, 3000 * i, 3000);
 			}
 			else if (bumpyCube_modes[i] == 3) {
-				std::vector<glm::vec3> N_bumpyCube_new = calculateAverageNormal(V_bumpyCube, N_bumpyCube, 3000 * i, 3000 * (i + 1) - 1);
+				
 				VBO_bumpyCube_normal.update(N_bumpyCube_new);
 				glDrawArrays(GL_TRIANGLES, 3000 * i, 3000);
 			}
@@ -1190,7 +1196,7 @@ int main(void)
 				glDrawArrays(GL_TRIANGLES, 3000 * i, 3000);
 			}
 			else if (bunny_modes[i] == 3) {
-				std::vector<glm::vec3> N_bunny_new=calculateAverageNormal(V_bunny, N_bunny, 3000 * i, 3000 * (i + 1) - 1);
+				
 				VBO_bunny_normal.update(N_bunny_new);
 				glDrawArrays(GL_TRIANGLES, 3000 * i, 3000);
 			}
